@@ -15,7 +15,7 @@ const App = () => (
 
 const AppPresenter = () => (
     <Switch>
-      <Route to={"/"} exact={true} component={"Home"} />
+      <Route to={"/"} exact={true} component={Home} />
       <Redirect to={"*"} from={"/"}/>
     </Switch>
 );
