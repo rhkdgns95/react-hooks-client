@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { ThemeProvider } from "./typed-components";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import theme from "./theme";
+import Home from "./Routes/Home";
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const App = () => (
+  <ThemeProvider theme={theme}>
+    <BrowserRouter>
+      <AppPresenter />
+    </BrowserRouter>
+  </ThemeProvider>
+);
+
+const AppPresenter = () => (
+    <Switch>
+      <Route to={"/"} exact={true} component={"Home"} />
+      <Redirect to={"*"} from={"/"}/>
+    </Switch>
+);
 
 export default App;
