@@ -17,33 +17,56 @@ const UserTable = styled.table`
         padding: 10px;
     }
 `;
+interface IUser {
+    id: number;
+    name: string;
+    userName: string;
+}
 
-const TablePresenter = () => (
-    <UserTable>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Name Data</td>
-                <td>Username data</td>
-                <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </td>
-            </tr>
-        </tbody>
-    </UserTable>
-);
+interface IProps {
+    users: IUser[];
+}
 
-const Table = () => (
-    <Container>
-        <TablePresenter />
-    </Container>
-);
+const Table: React.FC<IProps> = ({
+    users
+}) => {
+    return (
+        <Container>
+            <UserTable>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        users.length === 0 && (
+                            <tr>
+                                <td colSpan={3}>No data.</td>
+                            </tr>
+                        )
+                    }
+                    {
+                        users.length !== 0 && (
+                            users.map((user, key) => (
+                                <React.Fragment key={key}>
+                                        <tr>
+                                            <td>{ user.name }</td>
+                                            <td>{ user.userName }</td>
+                                            <td>
+                                            <button>Edit</button>
+                                            <button>Delete</button>
+                                            </td>
+                                        </tr>
+                                </React.Fragment>))
+                        )
+                    }
+                </tbody>
+            </UserTable>
+        </Container>
+    )
+};
 
 export default Table;
