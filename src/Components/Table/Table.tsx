@@ -5,7 +5,7 @@ const Container = styled.div`
     
 `;
 const UserTable = styled.table`
-    width: 90%;
+    width: 100%;
     margin:0 auto;
     border-collapse: collapse;
     border-spacing: 0;
@@ -25,10 +25,14 @@ interface IUser {
 
 interface IProps {
     users: IUser[];
+    handleEditClick: (data: IUser) => any;
+    handleDeleteClick: (id: number) => any;
 }
 
 const Table: React.FC<IProps> = ({
-    users
+    users,
+    handleEditClick,
+    handleDeleteClick
 }) => {
     return (
         <Container>
@@ -50,14 +54,14 @@ const Table: React.FC<IProps> = ({
                     }
                     {
                         users.length !== 0 && (
-                            users.map((user, key) => (
+                            users.map((user: IUser, key) => (
                                 <React.Fragment key={key}>
                                         <tr>
                                             <td>{ user.name }</td>
                                             <td>{ user.userName }</td>
                                             <td>
-                                            <button>Edit</button>
-                                            <button>Delete</button>
+                                            <button onClick={e => {handleEditClick(user); }}>Edit</button>
+                                            <button onClick={e => {handleDeleteClick(user.id)}}>Delete</button>
                                             </td>
                                         </tr>
                                 </React.Fragment>))

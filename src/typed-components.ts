@@ -2,8 +2,10 @@ import * as StyleThings from "styled-components";
 import { ThemedStyledComponentsModule } from "styled-components";
 
 interface IProps {
-    blueColor: string;
-    grayColor: string;
+    addColor: string;
+    updateColor: string;
+    addActiveColor: string;
+    updateActiveColor: string;
 }
 
 const {

@@ -18,14 +18,17 @@ const Container = styled.input`
 interface IProps {
     value: string;
     className: string;
+    onClick?: (data: any) => void;
 }
 const Button: React.FC<IProps> = ({
     value,
-    className
+    className,
+    onClick
 }) => <Container
     value={value}
     type={"submit"}
     className={className}
+    onClick={onClick}
     />;
 
 export default Button;

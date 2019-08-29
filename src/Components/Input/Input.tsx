@@ -41,6 +41,7 @@ const Input: React.FC<IProps> = ({
         value={value}
         placeholder={placeholder}
         className={className}
+        autoComplete={"off"}
     />
 );
 
